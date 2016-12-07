@@ -1,0 +1,10 @@
+name: amnesia
+version: 0.1.0
+
+authors:
+  - z64 <zachnowicki@gmail.com>
+
+
+crystal: 0.20.0
+
+license: MIT
