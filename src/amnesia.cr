@@ -57,7 +57,7 @@ module Amnesia
     getter inbox
 
     # Initialize a client with an EmailAddress object
-    def initialize(@email)
+    def initialize(@email : EmailAddress)
     end
 
     # Initialize a client, building an EmailAddress
