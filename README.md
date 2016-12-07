@@ -10,7 +10,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   amnesia:
-    github: [your-github-name]/amnesia
+    github: z64/amnesia
 ```
 
 
