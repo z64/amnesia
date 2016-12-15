@@ -27,7 +27,7 @@ module Amnesia
     def initialize(string : String)
       data = string.split "@"
       @name = data[0]
-      @domain = data[1]
+      @domain = "@#{data[1]}"
       @md5 = to_md5
 
       raise "Domain unavailable: #{domain}" unless valid_domain?
@@ -35,7 +35,7 @@ module Amnesia
 
     # Render the address to a single string
     def to_s : String
-      "#{name}@#{domain}"
+      "#{name}#{domain}"
     end
 
     # Render the address to an MD5 string
@@ -50,7 +50,7 @@ module Amnesia
 
     # Checks if this email has a valid domain
     def valid_domain? : Bool
-      Amnesia::REST.domains.includes? "@#{@domain}"
+      Amnesia::REST.domains.includes? @domain
     end
 
     # Requests this email addresses inbox
