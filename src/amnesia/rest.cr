@@ -26,5 +26,10 @@ module Amnesia
     def domains : Array(String)
       Array(String).from_json get "domains"
     end
+
+    # Request inbox
+    def inbox(md5) : Array(Email)
+       Array(Email).from_json get "mail/id/#{md5}"
+    end
   end
 end
