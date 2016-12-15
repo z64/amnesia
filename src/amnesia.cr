@@ -85,9 +85,11 @@ module Amnesia
 
     # Initiate a REST call to fetch the
     # current inbox and update the cache
-    def poll! : Nil
+    def poll!(&block) : Nil
       @email.inbox.each do |e|
+        next if @inbox.has_key? e.id
         @inbox[e.id] = e
+        yield e
       end
       nil
     end
