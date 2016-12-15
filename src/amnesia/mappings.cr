@@ -1,6 +1,17 @@
 require "json"
 
 module Amnesia
+    module FloatMillisConverter
+      def self.from_json(value : JSON::PullParser) : Time
+        t = value.read_float * 1000
+        Time.epoch_ms(t.to_i64)
+      end
+
+      def self.to_json(value : Time, io : IO)
+        io.puts(value.epoch_ms.to_f / 1000)
+      end
+    end
+
   # Email object from temp-mail
   class Email
     JSON.mapping({
@@ -12,7 +23,7 @@ module Amnesia
       text_only: { type: String, key: "mail_text_only" },
       text: { type: String, key: "mail_text" },
       html: { type: String, nilable: true, key: "mail_html" },
-      timestamp: { type: Float32, key: "mail_timestamp" }
+      timestamp: { type: Time, key: "mail_timestamp", converter: FloatMillisConverter }
     }, strict: false)
 
     # Overload inspect for easier to read output
