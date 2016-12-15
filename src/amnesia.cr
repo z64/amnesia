@@ -38,13 +38,14 @@ module Amnesia
       Crypto::MD5.hex_digest to_s
     end
 
-    # TODO: Initiate a REST call to list available temp-mail domains.
+    # Initiate a REST call to list available temp-mail domains.
     def self.domains : Array(String)
+      Amnesia::REST.domains
     end
 
-    # TODO: Checks if this email has a valid domain
+    # Checks if this email has a valid domain
     def valid_domain? : Bool
-      true
+      Amnesia::REST.domains.includes? @domain
     end
   end
 
