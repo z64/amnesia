@@ -19,5 +19,10 @@ module Amnesia
     def inspect : String
       "<Amnesia::Email @id=#{id} @from=\"#{from}\" @subject=\"#{subject}\">"
     end
+
+    # Makes a request to delete an email
+    def delete : String
+      REST.delete id
+    end
   end
 end
