@@ -51,9 +51,6 @@ puts client.inspect
 ```
 
 
-TODO: Write usage instructions here
-
-
 ## Contributors
 
 - [z64](https://github.com/[your-github-name]) - creator, maintainer
