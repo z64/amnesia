@@ -94,9 +94,8 @@ module Amnesia
     # cached emails as the user likes.
     def poll!(&block) : Nil
       @email.inbox.each do |e|
-        next if @inbox.has_key? e.id
+        yield e unless @inbox.has_key? e.id
         @inbox[e.id] = e
-        yield e
       end
       nil
     end
