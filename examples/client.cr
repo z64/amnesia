@@ -27,6 +27,7 @@ loop do
   client.poll! do |e|
     puts "from: #{e.from}"
     puts "subject: #{e.subject}"
+    puts "timestamp: #{e.timestamp}"
     puts "body: #{e.text}"
   end
 end
