@@ -31,5 +31,10 @@ module Amnesia
     def inbox(md5) : Array(Email)
        Array(Email).from_json get "mail/id/#{md5}"
     end
+
+    # Delte request
+    def delete(md5 : String) : String
+      get "delete/id/#{md5}"
+    end
   end
 end
