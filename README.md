@@ -32,7 +32,7 @@ emails = address.inbox
 puts "bob has #{emails.size} emails."
 puts emails.map { |e| e.inspect }.join "\n"
 
-# Delete an email (uncomment this prodiding the account actually has emails)
+# Delete an email (uncomment this providing the account actually has emails)
 # puts emails.first.delete
 # puts address.inbox.size
 
