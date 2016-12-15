@@ -9,13 +9,17 @@ module Amnesia
   # to an MD5 for use with the temp-mail API.
   struct EmailAddress
     # Name part of the address
-    property name : String
+    getter name : String
 
     # Domain part of the address
-    property domain : String
+    getter domain : String
+
+    # MD5 of the email address
+    getter md5 : String
 
     # Build an address from a name and a domain
     def initialize(@name, @domain)
+      @md5 = to_md5
       raise "Domain unavailable: #{domain}" unless valid_domain?
     end
 
@@ -24,6 +28,7 @@ module Amnesia
       data = string.split "@"
       @name = data[0]
       @domain = data[1]
+      @md5 = to_md5
 
       raise "Domain unavailable: #{domain}" unless valid_domain?
     end
@@ -45,7 +50,7 @@ module Amnesia
 
     # Checks if this email has a valid domain
     def valid_domain? : Bool
-      Amnesia::REST.domains.includes? @domain
+      Amnesia::REST.domains.includes? "@#{@domain}"
     end
   end
 
