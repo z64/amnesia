@@ -6,11 +6,11 @@ module Amnesia
   module FloatMillisConverter
     def self.from_json(value : JSON::PullParser) : Time
       t = value.read_float * 1000
-      Time.epoch_ms(t.to_i64)
+      Time.epoch_ms t.to_i64
     end
 
     def self.to_json(value : Time, io : IO)
-      io.puts(value.epoch_ms.to_f / 1000)
+      io.puts value.epoch_ms.to_f / 1000
     end
   end
 
