@@ -30,6 +30,8 @@ module Amnesia
     # Request inbox
     def inbox(md5) : Array(Email)
       Array(Email).from_json get "mail/id/#{md5}"
+    rescue
+      [] of Email
     end
 
     # Delte request
