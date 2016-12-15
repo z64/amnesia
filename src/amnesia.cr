@@ -52,6 +52,11 @@ module Amnesia
     def valid_domain? : Bool
       Amnesia::REST.domains.includes? "@#{@domain}"
     end
+
+    # Requests this email addresses inbox
+    def inbox : Array(Email)
+      Amnesia::REST.inbox @md5
+    end
   end
 
   # temp-mail client for managing an inbox.
