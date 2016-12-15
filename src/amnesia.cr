@@ -65,19 +65,26 @@ module Amnesia
     getter email : EmailAddress
 
     # Cache of emails in this account
-    getter inbox
+    getter inbox : Hash(String, Email)
 
     # Initialize a client with an EmailAddress object
     def initialize(@email : EmailAddress)
+      @inbox = {} of String => Email
     end
 
     # Initialize a client, building an EmailAddress
     def initialize(string : String)
       @email = EmailAddress.new string
+      @inbox = {} of String => Email
     end
 
-    # TODO: Initiate a REST call to fetch the current inbox
-    def poll : Nil
+    # Initiate a REST call to fetch the
+    # current inbox and update the cache
+    def poll! : Nil
+      @email.inbox.each do |e|
+        @inbox[e.id] = e
+      end
+      nil
     end
   end
 
