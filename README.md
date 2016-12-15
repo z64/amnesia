@@ -44,10 +44,11 @@ client = Amnesia::Client.new address
 # like above with Amnesia::EmailAddress.
 
 # Update the Client's inbox
-client.poll!
-
-# Check out the inbox
-puts client.inspect
+# You can (optionally) pass a block to #poll! that
+# will be called each time a *new* email is added to the cache.
+client.poll! do |e|
+  puts "new email! From #{e.from}: #{e.subject}"
+end
 ```
 
 
