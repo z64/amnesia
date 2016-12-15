@@ -17,15 +17,15 @@ module Amnesia
   # Email object from temp-mail
   class Email
     JSON.mapping({
-      id: { type: String, key: "mail_id" },
-      address_id: { type: String, key: "mail_address_id" },
-      from: { type: String, key: "mail_from" },
-      subject: { type: String, key: "mail_subject" },
-      preview: { type: String, key: "mail_preview" },
-      text_only: { type: String, key: "mail_text_only" },
-      text: { type: String, key: "mail_text" },
-      html: { type: String, nilable: true, key: "mail_html" },
-      timestamp: { type: Time, key: "mail_timestamp", converter: FloatMillisConverter }
+      id:         {type: String, key: "mail_id"},
+      address_id: {type: String, key: "mail_address_id"},
+      from:       {type: String, key: "mail_from"},
+      subject:    {type: String, key: "mail_subject"},
+      preview:    {type: String, key: "mail_preview"},
+      text_only:  {type: String, key: "mail_text_only"},
+      text:       {type: String, key: "mail_text"},
+      html:       {type: String, nilable: true, key: "mail_html"},
+      timestamp:  {type: Time, key: "mail_timestamp", converter: FloatMillisConverter},
     }, strict: false)
 
     # Overload inspect for easier to read output

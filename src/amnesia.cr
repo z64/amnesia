@@ -80,7 +80,7 @@ module Amnesia
 
     # Overload inspect for easier to read output
     def inspect : String
-      "<Amnesia::Client @email=#{email.inspect} @inbox=#{inbox.map { |_, e| e.inspect}}>"
+      "<Amnesia::Client @email=#{email.inspect} @inbox=#{inbox.map { |_, e| e.inspect }}>"
     end
 
     # Initiate a REST call to fetch the
