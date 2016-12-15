@@ -78,6 +78,11 @@ module Amnesia
       @inbox = {} of String => Email
     end
 
+    # Overload inspect for easier to read output
+    def inspect : String
+      "<Amnesia::Client @email=#{email.inspect} @inbox=#{inbox.map { |_, e| e.inspect}}>"
+    end
+
     # Initiate a REST call to fetch the
     # current inbox and update the cache
     def poll! : Nil
