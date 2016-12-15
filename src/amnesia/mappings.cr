@@ -1,6 +1,8 @@
 require "json"
 
 module Amnesia
+  # Converter for temp-mail's timestamp format
+  # I have no idea why they did this.
   module FloatMillisConverter
     def self.from_json(value : JSON::PullParser) : Time
       t = value.read_float * 1000
