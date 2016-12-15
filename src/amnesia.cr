@@ -85,6 +85,16 @@ module Amnesia
 
     # Initiate a REST call to fetch the
     # current inbox and update the cache
+    def poll! : Nil
+      @email.inbox.each do |e|
+        next if @inbox.has_key? e.id
+        @inbox[e.id] = e
+      end
+      nil
+    end
+
+    # Overload to accept a block to process newly
+    # cached emails as the user likes.
     def poll!(&block) : Nil
       @email.inbox.each do |e|
         next if @inbox.has_key? e.id
